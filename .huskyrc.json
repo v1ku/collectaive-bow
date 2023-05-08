@@ -1,0 +1,28 @@
+{
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn type-check && yarn lint && yarn test"
+    },
+    "lint-staged": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ],
+      "*.ts": [
+        "eslint --fix",
+        "git add"
+      ],
+      "*.tsx": [
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged",
+        "pre-push": "yarn type-check && yarn lint && yarn test"
+      },
+      "gitDir": "../../../../../.git"
+    }
+  }
+  
