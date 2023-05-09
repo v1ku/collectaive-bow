@@ -1,4 +1,7 @@
 {
+  "name": "RocketChatRN",
+	"share": "ShareRocketChatRN",
+	"displayName": "RocketChatRN",
   "expo": {
     "name": "bow",
     "slug": "bow",

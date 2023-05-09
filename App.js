@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import 'react-native-console-time-polyfill';
+import { AppRegistry } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import { name as appName, share as shareName } from './app.json';
+
+if (__DEV__) {
+	require('./app/ReactotronConfig');
+} else {
+	console.log = () => {};
+	console.time = () => {};
+	console.timeLog = () => {};
+	console.timeEnd = () => {};
+	console.warn = () => {};
+	console.count = () => {};
+	console.countReset = () => {};
+	console.error = () => {};
+	console.info = () => {};
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+AppRegistry.registerComponent(appName, () => require('./app/index').default);
+AppRegistry.registerComponent(shareName, () => require('./app/share').default);
+
+// For storybook, comment everything above and uncomment below
+// import 'react-native-gesture-handler';
+// import 'react-native-console-time-polyfill';
+// import { AppRegistry } from 'react-native';
+// import { name as appName } from './app.json';
+
+// require('./app/ReactotronConfig');
+
+// AppRegistry.registerComponent(appName, () => require('./.storybook/index').default);
